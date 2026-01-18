@@ -93,8 +93,8 @@ router.middleware.js
 │   │   └── token.js
 
 │   │
-│   ├── app.js
-│   └── server.js
+│   ├── //app.js
+│   └── index.js
 │
 ├── .env
 ├── package.json

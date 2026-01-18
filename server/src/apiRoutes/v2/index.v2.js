@@ -1,9 +1,8 @@
 import express from "express";
+import { v2middleware } from "../../middlewares/router.middleware.js";
 
 const v2Router = express.Router();
 
-v2Router.use("/v2", (req, res) => {
-  res.status(200).json({ message: "API v2 is Working", status: "success" });
-});
+v2Router.use("/v2", v2middleware);
 
 export default v2Router;
