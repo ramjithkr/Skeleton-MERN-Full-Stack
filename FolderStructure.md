@@ -65,17 +65,18 @@ server/
 │   │
 │   ├── routes/
 │   │   ├── index.api.js
+│   │   │
 │   │   ├── v1/
 │   │   │   ├── index.v1.js
-/user
-user.auth.routes.js
-user.routes.js
-
-/admin
-admin.auth.routes.js
-admin.routes.js
-
-│   │   
+│   │   │   │
+│   │   │   ├── user/
+│   │   │   │   ├── user.routes.js
+│   │   │   │   └── user.auth.routes.js
+│   │   │   │
+│   │   │   └── admin/
+│   │   │       ├── admin.routes.js
+│   │   │       └── admin.auth.routes.js
+│   │   │
 │   │   └── v2/
 │   │       └── index.v2.js
 │   │
@@ -86,16 +87,62 @@ admin.routes.js
 │   ├── middlewares/
 │   │   ├── auth.middleware.js
 │   │   ├── error.middleware.js
-│   │   └── notFound.middleware.js
-router.middleware.js
+│   │   ├── notFound.middleware.js
+rateLimit.middleware.js
+morgan.middleware.ts
 │   │
 │   ├── utils/
-│   │   └── token.js
-
+│   │   ├── token.js
+│   │   └── AppError.js
 │   │
-│   ├── //app.js
+logs/
+combined.log
+error.log
+
+
+typrs/
+xss-clean.d.ts
+
+
+│   ├── app.js
 │   └── index.js
 │
 ├── .env
 ├── package.json
 └── README.md
+
+
+
+helmet – Secure HTTP headers
+❓ What it does
+
+Adds security-related HTTP headers to prevent:
+
+XSS attacks
+
+Clickjacking
+
+MIME sniffing
+
+Information leakage
+
+//
+import cors from "cors";
+
+app.use(cors());
+
+
+
+app.use(
+  cors({
+    origin: ["http://localhost:5173", "https://myapp.com"],
+    credentials: true,
+  })
+);
+
+
+MINIMUM security stack (recommended)
+app.use(helmet());
+app.use(cors());
+app.use(mongoSanitize());
+app.use(xss());
