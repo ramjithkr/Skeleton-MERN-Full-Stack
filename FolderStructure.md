@@ -96,8 +96,7 @@ morgan.middleware.ts
 │   │   └── AppError.js
 │   │
 logs/
-combined.log
-error.log
+access.log
 
 
 typrs/
