@@ -1,15 +1,19 @@
-import logger from "../logger/winston.logger.js";
+import logger from "../config/logger.js";
 
-export const errorMiddleware = (err, req, res, next) => {
-  logger.error({
-    message: err.message,
-    stack: err.stack,
+const errorHandler = (err, req, res, next) => {
+  logger.error(err.message, {
     method: req.method,
     url: req.originalUrl,
+    stack: err.stack,
   });
 
   res.status(err.statusCode || 500).json({
     status: "error",
-    message: err.message || "Internal Server Error",
+    message:
+      process.env.NODE_ENV === "production"
+        ? "Internal server error"
+        : err.message,
   });
 };
+
+export default errorHandler;

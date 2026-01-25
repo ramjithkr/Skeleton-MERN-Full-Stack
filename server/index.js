@@ -1,7 +1,7 @@
 import app from "./app.js";
 import { env } from "./src/config/env.js";
 import { connectDB } from "./src/config/db.js";
-import logger from "./src/logger/winston.logger.js";
+import logger from "./src/config/logger.js";
 
 connectDB();
 
