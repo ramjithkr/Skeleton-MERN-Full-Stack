@@ -1,6 +1,5 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-//
 import User from "../../models/user/user.model.js";
 import AppError from "../../utils/AppError.js";
 
@@ -141,6 +140,3 @@ export const logoutUser = (req, res) => {
     message: "Logged out successfully",
   });
 };
-
-
-
