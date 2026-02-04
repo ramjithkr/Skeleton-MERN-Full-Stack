@@ -19,7 +19,7 @@ app.use(
   cors({
     origin: "http://localhost:5173",
     credentials: true,
-  })
+  }),
 );
 
 app.use(express.json());
@@ -28,7 +28,7 @@ app.use(mongoSanitize());
 app.use(xss());
 
 /* ---------- Logging ---------- */
-app.use(morganMiddleware); 
+app.use(morganMiddleware);
 
 /* ---------- Routes ---------- */
 app.get("/", (req, res) => {
